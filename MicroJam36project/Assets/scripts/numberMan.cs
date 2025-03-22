@@ -6,10 +6,13 @@ public class numberMan : MonoBehaviour
 {
     [SerializeField]
     private GameObject numberContainer;
+    public int amount;
+    [SerializeField]
+    private GameObject number;
     // Start is called before the first frame update
     void Start()
     {
-        disable();
+        enable();
     }
 
     // Update is called once per frame
@@ -23,6 +26,11 @@ public class numberMan : MonoBehaviour
     }
     public void enable()
     {
-        numberContainer.SetActive(false);
+        numberContainer.SetActive(true);
+        generateNums();
+    }
+    public void generateNums()
+    {
+        Instantiate(number, new Vector2(0,0), transform.rotation, numberContainer.transform);
     }
 }

@@ -447,6 +447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberContainer: {fileID: 1872948629}
+  amount: 0
+  number: {fileID: 1910043096154503731, guid: 77dae3b443dc95d43ba34165d05f868e, type: 3}
 --- !u!1 &1676545385
 GameObject:
   m_ObjectHideFlags: 0
