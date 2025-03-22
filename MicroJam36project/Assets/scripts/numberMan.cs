@@ -24,6 +24,8 @@ public class numberMan : MonoBehaviour
     AudioSource CorrectSound;
     AudioSource PressSound;
     AudioSource ErrorSound;
+
+    public int LastFailed;
     void Start()
     {
         CorrectSound = GetComponent<AudioSource>();
@@ -59,6 +61,8 @@ public class numberMan : MonoBehaviour
                     e.keyCode.ToString() == "Alpha9")
                 {
                     //mistake
+                    LastFailed = 0;
+                    GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(50);
                     Invoke("PlayES", 0.13f);
                     for (int i = 0; i < amount; i++)
                     {
@@ -73,6 +77,7 @@ public class numberMan : MonoBehaviour
                 {
                     Time.timeScale = 1.0f;
                     Invoke("PlayCS", 0.13f);
+                    GameObject.Find("StyleManager").GetComponent<Style>().Addstyle(50);
                     //correctly solved
                     if(astroidType== 1)
                     {
@@ -92,7 +97,10 @@ public class numberMan : MonoBehaviour
         }
         
     }
-    
+    void FixedUpdate()
+    {
+        LastFailed += 1;
+    }
     public void disable()
     {
         Time.timeScale = 1.0f;

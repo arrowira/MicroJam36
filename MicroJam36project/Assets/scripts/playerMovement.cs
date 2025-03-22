@@ -22,6 +22,8 @@ public class playerMovement : MonoBehaviour
     [SerializeField]
     private GameObject fuelDeathpanel;
 
+    public int LastHit;
+
     void Start()
     {
         InvokeRepeating("Tick", 0.3f, 0.3f);
@@ -55,6 +57,7 @@ public class playerMovement : MonoBehaviour
             Invoke("fuelDeath", 6);
             Invoke("fuelDeathMessage", 0);
         }
+        LastHit += 1;
     }
     private void fuelDeath()
     {
@@ -78,7 +81,9 @@ public class playerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            LastHit = 0;
             Health -= 10;
+            GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(100);
             collision.gameObject.GetComponent<MeteorController>().Die();
         }
         if (collision.gameObject.tag == "Fuel")

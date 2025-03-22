@@ -2029,6 +2029,7 @@ MonoBehaviour:
   amount: 3
   number: {fileID: 5794225086738503311, guid: 77dae3b443dc95d43ba34165d05f868e, type: 3}
   pm: {fileID: 1565836483}
+  LastFailed: 0
 --- !u!82 &867246805
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3112,6 +3113,50 @@ Transform:
   - {fileID: 299165655}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1259862160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1259862161}
+  - component: {fileID: 1259862162}
+  m_Layer: 0
+  m_Name: StyleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1259862161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259862160}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.199981, y: 2.207885, z: 5.8845434}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1259862162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259862160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c90c663fa8c9c349aada0cbfc94c3e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1345989035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3387,6 +3432,7 @@ MonoBehaviour:
   hpBar: {fileID: 306321464}
   powerBar: {fileID: 1072613771}
   fuelDeathpanel: {fileID: 801715579}
+  LastHit: 0
 --- !u!95 &1565836484
 Animator:
   serializedVersion: 5
@@ -4399,3 +4445,4 @@ SceneRoots:
   - {fileID: 1051112138}
   - {fileID: 1061563910}
   - {fileID: 1204376558}
+  - {fileID: 1259862161}
