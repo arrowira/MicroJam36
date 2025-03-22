@@ -16,6 +16,10 @@ public class numberMan : MonoBehaviour
     Event e;
     private int difficulty = 0;
     bool keydown = false;
+    [SerializeField]
+    playerMovement pm;
+    private int astroidType = 0;
+    //0 is none. 1 is money. 2 is fuel
 
     AudioSource CorrectSound;
     AudioSource PressSound;
@@ -70,6 +74,15 @@ public class numberMan : MonoBehaviour
                     Time.timeScale = 1.0f;
                     Invoke("PlayCS", 0.13f);
                     //correctly solved
+                    if(astroidType== 1)
+                    {
+                        pm.addMoney(10);
+                    }
+                    else if (astroidType== 2)
+                    {
+                        pm.addFuel(10);
+                    }
+                    
                     Invoke("disable", 0.1f);
                 }
             }
@@ -104,8 +117,9 @@ public class numberMan : MonoBehaviour
     {
         difficulty = dif;
     }
-    public void enable()
+    public void enable(int x)
     {
+        astroidType= x;
         disable();
         numbers = new List<GameObject>();
         transform.position = new Vector2(Screen.width*0.5f+40, 200);

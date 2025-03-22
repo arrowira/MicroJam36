@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour 
 {
@@ -12,8 +13,14 @@ public class playerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     numberMan npm;
-
-    int Health = 100, Fuel = 100, Score = 0, Money = 0;
+    [SerializeField]
+    private Image hpBar;
+    [SerializeField]
+    private Image powerBar;
+    private int fuelCap = 100;
+    float Health = 100, Fuel = 100, Score = 0, Money = 0;
+    [SerializeField]
+    private GameObject fuelDeathpanel;
 
     void Start()
     {
@@ -21,6 +28,13 @@ public class playerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        hpBar.fillAmount = Health / 100.0f;
+        powerBar.fillAmount = Fuel / 100.0f;
+        if(Fuel > fuelCap)
+        {
+            Fuel = fuelCap;
+        }
+
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(Vector2.up * upDownSpeed);
@@ -37,10 +51,29 @@ public class playerMovement : MonoBehaviour
 
         if (Fuel <= 0)
         {
-            SceneManager.LoadScene("MainScene");
+            rb.AddForce(transform.right * -20, ForceMode2D.Force);
+            Invoke("fuelDeath", 6);
+            Invoke("fuelDeathMessage", 0);
         }
     }
-
+    private void fuelDeath()
+    {
+       
+        SceneManager.LoadScene("MainScene");
+        fuelDeathpanel.SetActive(false);
+    }
+    private void fuelDeathMessage()
+    {
+        fuelDeathpanel.SetActive(true);
+    }
+    public void addFuel(int amt)
+    {
+        Fuel += amt;
+    }
+    public void addMoney(int amt)
+    {
+        Money += amt;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -50,21 +83,21 @@ public class playerMovement : MonoBehaviour
         }
         if (collision.gameObject.tag == "Fuel")
         {
-            npm.enable();
-            Fuel += 10;
+            npm.enable(2);
+           
             collision.gameObject.GetComponent<MeteorController>().Die();
         }
         if (collision.gameObject.tag == "Normal")
         {
-            npm.enable();
-            Money += 10;
+            npm.enable(1);
+            
             collision.gameObject.GetComponent<MeteorController>().Die();
         }
     }
 
     void Tick()
     {
-        Fuel -= 1;
+        Fuel -= 0.7f;
     }
     
 }
