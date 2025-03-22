@@ -27,15 +27,11 @@ public class Style : MonoBehaviour
         {
             if(Lh < 300 && Lf < 120)
             {
-                if(GameObject.Find("playerManager").transform.Find("player").GetComponent<Rigidbody2D>().velocity.magnitude  >= 0.1f)
+                if(GameObject.Find("playerManager").transform.Find("player").GetComponent<Rigidbody2D>().velocity.magnitude >= 0.1f)
                 {
                     RemoveStyle(Random.Range(0, 2));
                 }
                 RemoveStyle((int)LastGained / 100);
-            }
-            else
-            {
-
             }
         }
         Debug.Log(PStyle);

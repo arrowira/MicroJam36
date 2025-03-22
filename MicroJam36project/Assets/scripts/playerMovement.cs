@@ -98,11 +98,17 @@ public class playerMovement : MonoBehaviour
             
             collision.gameObject.GetComponent<MeteorController>().Die();
         }
+        if (collision.gameObject.tag == "Healing")
+        {
+            Health += 25;
+            GameObject.Find("StyleManager").GetComponent<Style>().Addstyle(100);
+            collision.gameObject.GetComponent<MeteorController>().Die();
+        }
     }
 
     void Tick()
     {
-        Fuel -= 0.7f;
+        Fuel -= 0.3f;
     }
     
 }
