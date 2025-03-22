@@ -7,6 +7,7 @@ public class MeteorSpawning : MonoBehaviour
     public GameObject MeteorPrefab;
     public GameObject EnemyPrefab;
     public GameObject FuelPrefab;
+    public float scaleMod = 1;
 
     public GameObject[] MArray = new GameObject[3];
     void Start()
@@ -28,7 +29,7 @@ public class MeteorSpawning : MonoBehaviour
                 Pre = FuelPrefab;
             }
             GameObject M = Instantiate(Pre, new Vector3(10 + Random.Range(1, 10), -5 + Random.Range(1, 10), 1), Quaternion.identity);
-            float scale = Random.Range(0.5f, 2f);
+            float scale = Random.Range(0.5f*scaleMod, 2f*scaleMod);
             M.transform.localScale = new Vector3(scale, scale, 1);
         }
     }
