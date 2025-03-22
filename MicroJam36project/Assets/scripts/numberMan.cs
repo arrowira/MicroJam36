@@ -102,7 +102,7 @@ public class numberMan : MonoBehaviour
         disable();
         numbers = new List<GameObject>();
         transform.position = new Vector2(Screen.width*0.5f+40, 200);
-        Time.timeScale = 0.2f;
+        Time.timeScale = 0f;
         pos = 0;
         amount = Random.Range(3+difficulty, 10+difficulty);
         transform.position=new Vector2(transform.position.x-(amount*40), transform.position.y);
