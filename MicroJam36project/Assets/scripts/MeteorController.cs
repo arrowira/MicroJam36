@@ -18,4 +18,11 @@ public class MeteorController : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag != "player")
+        {
+            Die();
+        }
+    }
 }

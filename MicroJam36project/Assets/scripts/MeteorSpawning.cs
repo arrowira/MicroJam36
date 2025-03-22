@@ -11,6 +11,7 @@ public class MeteorSpawning : MonoBehaviour
     public float scaleMod = 1;
 
     public GameObject[] MArray = new GameObject[3];
+    public int FuelChance, NormalChance, DamageChance;
     void Start()
     {
         MArray = new GameObject[] { MeteorPrefab, EnemyPrefab, FuelPrefab };
@@ -27,11 +28,13 @@ public class MeteorSpawning : MonoBehaviour
         {
             GameObject Pre = MeteorPrefab;
             int rand = Random.Range(1, 101);
-            if(rand <= 25)
+            FuelChance = 25;
+            DamageChance = 25;
+            if(rand <= DamageChance)
             {
                 Pre = EnemyPrefab;
             }
-            if(rand<= 50 && rand > 25)
+            if(rand<= DamageChance + FuelChance && rand > DamageChance)
             {
                 Pre = FuelPrefab;
             }

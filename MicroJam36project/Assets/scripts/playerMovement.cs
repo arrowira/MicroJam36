@@ -108,7 +108,7 @@ public class playerMovement : MonoBehaviour
 
     void Tick()
     {
-        Fuel -= 0.3f;
+        Fuel -= 0.47f;
     }
     
 }
