@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 233863042}
   - component: {fileID: 233863043}
+  - component: {fileID: 233863044}
   m_Layer: 0
   m_Name: Background2
   m_TagString: Untagged
@@ -149,7 +150,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.6153, y: 0.81, z: 100}
-  m_LocalScale: {x: 18.223368, y: 10.12645, z: 5}
+  m_LocalScale: {x: 18.223368, y: 10.12645, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 380727828}
@@ -196,7 +197,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.95389986, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -206,6 +207,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &233863044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233863041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff99d739ef08c704893628380b2224cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &273785203
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +251,8 @@ Transform:
   m_LocalPosition: {x: 2.1954796, y: -0.91877866, z: -9.616168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 637563181}
   m_Father: {fileID: 1898466212}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &273785205
@@ -545,12 +559,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637563180}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.04, y: -0.94, z: -9.616168}
-  m_LocalScale: {x: 1.5, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.84452033, y: -0.02122134, z: 0}
+  m_LocalScale: {x: 1.5000001, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1898466212}
+  m_Father: {fileID: 273785204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &637563182
 BoxCollider2D:
@@ -679,6 +693,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MeteorPrefab: {fileID: 7859196017972678226, guid: fe4065b13391d0b4c87af7a627ea7ff3, type: 3}
+  EnemyPrefab: {fileID: 7859196017972678226, guid: b58aac258c016fd41a78713655f94c22, type: 3}
+  FuelPrefab: {fileID: 7859196017972678226, guid: 21a40f98d47fbea46bf1d3e03fe1b3bb, type: 3}
+  MArray: []
 --- !u!4 &709401325
 Transform:
   m_ObjectHideFlags: 0
@@ -704,6 +721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1019139339}
   - component: {fileID: 1019139340}
+  - component: {fileID: 1019139341}
   m_Layer: 0
   m_Name: Background1
   m_TagString: Untagged
@@ -768,7 +786,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.38867044, b: 1, a: 1}
+  m_Color: {r: 0.060605526, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -778,6 +796,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1019139341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019139338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff99d739ef08c704893628380b2224cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1898466211
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,7 +838,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 273785204}
-  - {fileID: 637563181}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807

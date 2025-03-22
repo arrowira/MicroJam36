@@ -7,13 +7,13 @@ public class playerMovement : MonoBehaviour
     public float upDownSpeed;
     [SerializeField]
     private Rigidbody2D rb;
-    // Start is called before the first frame update
+
+    int Health = 100, Fuel = 100, Score = 0, Money = 0;
+
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
@@ -24,6 +24,25 @@ public class playerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.S))
         {
             rb.AddForce(Vector2.up * -upDownSpeed);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Health -= 10;
+            collision.gameObject.GetComponent<MeteorController>().Die();
+        }
+        if (collision.gameObject.tag == "Fuel")
+        {
+            Fuel += 10;
+            collision.gameObject.GetComponent<MeteorController>().Die();
+        }
+        if (collision.gameObject.tag == "Normal")
+        {
+            Money += 10;
+            collision.gameObject.GetComponent<MeteorController>().Die();
         }
     }
 }

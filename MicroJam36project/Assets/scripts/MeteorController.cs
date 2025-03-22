@@ -14,7 +14,7 @@ public class MeteorController : MonoBehaviour
     {
         gameObject.transform.position = new Vector2(gameObject.transform.position.x - speed, gameObject.transform.position.y);
     }
-    void Die()
+    public void Die()
     {
         Destroy(gameObject);
     }
