@@ -16,7 +16,9 @@ public class MeteorController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        gameObject.transform.position = new Vector2(gameObject.transform.position.x - speed, gameObject.transform.position.y);
+        float mod = GameObject.Find("MeteorSpawner").GetComponent<MeteorSpawning>().Difficulty;
+        Debug.Log("M: " + mod);
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x - (speed*mod), gameObject.transform.position.y);
     }
     public void Die()
     {

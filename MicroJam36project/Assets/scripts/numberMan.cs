@@ -62,7 +62,7 @@ public class numberMan : MonoBehaviour
                 {
                     //mistake
                     LastFailed = 0;
-                    GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(50);
+                    GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(416);
                     Invoke("PlayES", 0.13f);
                     for (int i = 0; i < amount; i++)
                     {
@@ -78,7 +78,6 @@ public class numberMan : MonoBehaviour
                     Time.timeScale = 1.0f;
                     Invoke("PlayCS", 0.13f);
                     GameObject.Find("StyleManager").GetComponent<Style>().Addstyle(50);
-                    GameObject.Find("StyleManager").GetComponent<Style>().Combo += 1;
                     //correctly solved
                     if(astroidType== 1)
                     {

@@ -95,6 +95,7 @@ public class playerMovement : MonoBehaviour
         {
             npm.disable();
             collision.gameObject.GetComponent<MeteorController>().Die();
+            GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(416);
         }
         else
         {
@@ -102,7 +103,7 @@ public class playerMovement : MonoBehaviour
             {
                 LastHit = 0;
                 Health -= 10;
-                GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(100);
+                GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(832);
                 collision.gameObject.GetComponent<MeteorController>().Die();
             }
             if (collision.gameObject.tag == "Fuel")
@@ -120,7 +121,7 @@ public class playerMovement : MonoBehaviour
             if (collision.gameObject.tag == "Healing")
             {
                 Health += 25;
-                GameObject.Find("StyleManager").GetComponent<Style>().Addstyle(100);
+                GameObject.Find("StyleManager").GetComponent<Style>().Addstyle(50);
                 collision.gameObject.GetComponent<MeteorController>().Die();
             }
         }

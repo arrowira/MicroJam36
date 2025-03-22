@@ -13,7 +13,7 @@ public class Style : MonoBehaviour
     public float styleRank = 0;
     [SerializeField]
     private Image styleBar;
-    public int Combo = 0;
+    public float Combo = 0;
     void Start()
     {
         
@@ -57,7 +57,7 @@ public class Style : MonoBehaviour
     {
         PStyle += amount*Combo;
         LastGained = 0;
-        Combo += 1;
+        Combo += 1 - (Combo / 10);
     }
 
     public void RemoveStyle(int amount)

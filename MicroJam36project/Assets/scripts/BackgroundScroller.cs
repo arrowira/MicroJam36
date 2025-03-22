@@ -14,9 +14,10 @@ public class BackgroundScroller : MonoBehaviour
     }
     void FixedUpdate()
     {
-        B1.transform.position = new Vector3(B1.transform.position.x - speed, B1.transform.position.y, 100);
-        B2.transform.position = new Vector3(B2.transform.position.x - speed, B2.transform.position.y, 100);
-        B3.transform.position = new Vector3(B2.transform.position.x - speed, B2.transform.position.y, 100);
+        float mod = GameObject.Find("MeteorSpawner").GetComponent<MeteorSpawning>().Difficulty;
+        B1.transform.position = new Vector3(B1.transform.position.x - (speed*mod), B1.transform.position.y, 100);
+        B2.transform.position = new Vector3(B2.transform.position.x - (speed * mod), B2.transform.position.y, 100);
+        B3.transform.position = new Vector3(B2.transform.position.x - (speed * mod), B2.transform.position.y, 100);
         if (B1.transform.position.x <= -20)
         {
             B1.transform.position = new Vector3(10, B1.transform.position.y, 100);
