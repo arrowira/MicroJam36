@@ -17,17 +17,17 @@ public class BackgroundScroller : MonoBehaviour
         B1.transform.position = new Vector3(B1.transform.position.x - speed, B1.transform.position.y, 100);
         B2.transform.position = new Vector3(B2.transform.position.x - speed, B2.transform.position.y, 100);
         B3.transform.position = new Vector3(B2.transform.position.x - speed, B2.transform.position.y, 100);
-        if (B1.transform.position.x <= -15)
+        if (B1.transform.position.x <= -20)
         {
-            B1.transform.position = new Vector3(15, B1.transform.position.y, 100);
+            B1.transform.position = new Vector3(10, B1.transform.position.y, 100);
         }
-        if (B2.transform.position.x <= -15)
+        if (B2.transform.position.x <= -20)
         {
-            B2.transform.position = new Vector3(15, B2.transform.position.y, 100);
+            B2.transform.position = new Vector3(10, B2.transform.position.y, 100);
         }
-        if (B3.transform.position.x <= -15)
+        if (B3.transform.position.x <= -20)
         {
-            B3.transform.position = new Vector3(15, B3.transform.position.y, 100);
+            B3.transform.position = new Vector3(10, B3.transform.position.y, 100);
         }
     }
 }
