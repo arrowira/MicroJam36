@@ -8,7 +8,7 @@ public class MeteorController : MonoBehaviour
     void Start()
     {
         Invoke("Die", 10);
-        speed = 0.22f;
+        speed = 0.15f;
     }
     void FixedUpdate()
     {

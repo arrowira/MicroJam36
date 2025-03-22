@@ -19,10 +19,12 @@ public class numberMan : MonoBehaviour
 
     AudioSource CorrectSound;
     AudioSource PressSound;
+    AudioSource ErrorSound;
     void Start()
     {
         CorrectSound = GetComponent<AudioSource>();
         PressSound = GameObject.Find("AudioManager").GetComponent<AudioSource>();
+        ErrorSound = GameObject.Find("AudioManager").transform.Find("ErrorSound").GetComponent<AudioSource>();
     }
     void OnGUI()
     {
@@ -53,6 +55,7 @@ public class numberMan : MonoBehaviour
                     e.keyCode.ToString() == "Alpha9")
                 {
                     //mistake
+                    Invoke("PlayES", 0.13f);
                     for (int i = 0; i < amount; i++)
                     {
                         numbers[i].GetComponent<number>().kill();
@@ -65,7 +68,7 @@ public class numberMan : MonoBehaviour
                 if (pos == amount)
                 {
                     Time.timeScale = 1.0f;
-                    CorrectSound.Play();
+                    Invoke("PlayCS", 0.13f);
                     //correctly solved
                     Invoke("disable", 0.1f);
                 }
@@ -130,5 +133,13 @@ public class numberMan : MonoBehaviour
             numbers[i].GetComponent<number>().setNum(s[i].ToString());
         }
        
+    }
+    void PlayCS()
+    {
+        CorrectSound.Play();
+    }
+    void PlayES()
+    {
+        ErrorSound.Play();
     }
 }
