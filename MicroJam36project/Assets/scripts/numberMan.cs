@@ -82,10 +82,12 @@ public class numberMan : MonoBehaviour
                     if(astroidType== 1)
                     {
                         pm.addMoney(10);
+                        pm.addScore(10);
                     }
                     else if (astroidType== 2)
                     {
                         pm.addFuel(10);
+                        pm.addScore(5);
                     }
                     
                     Invoke("disable", 0.1f);

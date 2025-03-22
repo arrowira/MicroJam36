@@ -5,8 +5,12 @@ using UnityEngine;
 public class MeteorController : MonoBehaviour
 {
     float speed;
+    private Rigidbody2D rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        float randTurn = Random.Range(-3, 3);
+        rb.AddTorque(10 * randTurn);
         Invoke("Die", 10);
         speed = 0.15f;
     }

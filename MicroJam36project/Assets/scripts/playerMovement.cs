@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class playerMovement : MonoBehaviour 
 {
@@ -21,15 +22,25 @@ public class playerMovement : MonoBehaviour
     float Health = 100, Fuel = 100, Score = 0, Money = 0;
     [SerializeField]
     private GameObject fuelDeathpanel;
-
+    [SerializeField]
+    private TMP_Text moneyText;
     public int LastHit;
-
+    [SerializeField]
+    Style style;
+    [SerializeField]
+    private TMP_Text scoreNum;
     void Start()
     {
         InvokeRepeating("Tick", 0.3f, 0.3f);
+        scoreNum.text = "0";
+        moneyText.text = "0";
     }
     void FixedUpdate()
     {
+        if (Health > 100)
+        {
+            Health = 100;
+        }
         hpBar.fillAmount = Health / 100.0f;
         powerBar.fillAmount = Fuel / 100.0f;
         if(Fuel > fuelCap)
@@ -76,6 +87,7 @@ public class playerMovement : MonoBehaviour
     public void addMoney(int amt)
     {
         Money += amt;
+        moneyText.text = Money.ToString();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -102,7 +114,7 @@ public class playerMovement : MonoBehaviour
             if (collision.gameObject.tag == "Normal")
             {
                 npm.enable(1);
-
+                Money += 10;
                 collision.gameObject.GetComponent<MeteorController>().Die();
             }
             if (collision.gameObject.tag == "Healing")
@@ -114,7 +126,11 @@ public class playerMovement : MonoBehaviour
         }
         
     }
-
+    public void addScore(int amt)
+    {
+        Score += amt*(style.styleRank+0.5f);
+        scoreNum.text = ((int)Score).ToString();
+    }
     void Tick()
     {
         Fuel -= 0.47f;
