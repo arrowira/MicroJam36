@@ -9,7 +9,7 @@ public class numberMan : MonoBehaviour
     public int amount = 3;
     [SerializeField]
     private GameObject number;
-    private bool enabled = false;
+    public bool enabled = false;
     private List<GameObject> numbers = new List<GameObject>();
     private string s;
     private int pos = 0;

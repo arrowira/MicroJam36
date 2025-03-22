@@ -79,31 +79,40 @@ public class playerMovement : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (npm.enabled)
         {
-            LastHit = 0;
-            Health -= 10;
-            GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(100);
+            npm.disable();
             collision.gameObject.GetComponent<MeteorController>().Die();
         }
-        if (collision.gameObject.tag == "Fuel")
+        else
         {
-            npm.enable(2);
-           
-            collision.gameObject.GetComponent<MeteorController>().Die();
+            if (collision.gameObject.tag == "Enemy")
+            {
+                LastHit = 0;
+                Health -= 10;
+                GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(100);
+                collision.gameObject.GetComponent<MeteorController>().Die();
+            }
+            if (collision.gameObject.tag == "Fuel")
+            {
+                npm.enable(2);
+
+                collision.gameObject.GetComponent<MeteorController>().Die();
+            }
+            if (collision.gameObject.tag == "Normal")
+            {
+                npm.enable(1);
+
+                collision.gameObject.GetComponent<MeteorController>().Die();
+            }
+            if (collision.gameObject.tag == "Healing")
+            {
+                Health += 25;
+                GameObject.Find("StyleManager").GetComponent<Style>().Addstyle(100);
+                collision.gameObject.GetComponent<MeteorController>().Die();
+            }
         }
-        if (collision.gameObject.tag == "Normal")
-        {
-            npm.enable(1);
-            
-            collision.gameObject.GetComponent<MeteorController>().Die();
-        }
-        if (collision.gameObject.tag == "Healing")
-        {
-            Health += 25;
-            GameObject.Find("StyleManager").GetComponent<Style>().Addstyle(100);
-            collision.gameObject.GetComponent<MeteorController>().Die();
-        }
+        
     }
 
     void Tick()
