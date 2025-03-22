@@ -15,7 +15,7 @@ public class MeteorSpawning : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(Random.Range(1, 30) == 1)
+        if(Random.Range(1, 60) == 1)
         {
             GameObject Pre = MeteorPrefab;
             int rand = Random.Range(1, 101);
@@ -28,7 +28,7 @@ public class MeteorSpawning : MonoBehaviour
                 Pre = FuelPrefab;
             }
             GameObject M = Instantiate(Pre, new Vector3(10 + Random.Range(1, 10), -5 + Random.Range(1, 10), 1), Quaternion.identity);
-            float scale = Random.Range(0.5f, 3f);
+            float scale = Random.Range(0.5f, 2f);
             M.transform.localScale = new Vector3(scale, scale, 1);
         }
     }

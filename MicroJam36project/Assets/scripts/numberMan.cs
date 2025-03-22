@@ -16,11 +16,13 @@ public class numberMan : MonoBehaviour
     Event e;
     private int difficulty = 0;
     bool keydown = false;
-    
-    // Start is called before the first frame update
+
+    AudioSource CorrectSound;
+    AudioSource PressSound;
     void Start()
     {
-        enable();
+        CorrectSound = GetComponent<AudioSource>();
+        PressSound = GameObject.Find("AudioManager").GetComponent<AudioSource>();
     }
     void OnGUI()
     {
@@ -34,8 +36,7 @@ public class numberMan : MonoBehaviour
 
                 if (e.keyCode.ToString() == "Alpha" + s[pos].ToString())
                 {
-
-                    //correct
+                    PressSound.Play();
                     numbers[pos].GetComponent<number>().setCol();
                     pos++;
 
@@ -64,6 +65,7 @@ public class numberMan : MonoBehaviour
                 if (pos == amount)
                 {
                     Time.timeScale = 1.0f;
+                    CorrectSound.Play();
                     //correctly solved
                     Invoke("disable", 0.1f);
                 }
@@ -106,7 +108,7 @@ public class numberMan : MonoBehaviour
         transform.position = new Vector2(Screen.width*0.5f+40, 200);
         Time.timeScale = 0f;
         pos = 0;
-        amount = Random.Range(3+difficulty, 10+difficulty);
+        amount = Random.Range(2+difficulty, 5+difficulty);
         transform.position=new Vector2(transform.position.x-(amount*40), transform.position.y);
         genS();
         enabled = true;
