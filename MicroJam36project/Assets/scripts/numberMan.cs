@@ -16,6 +16,7 @@ public class numberMan : MonoBehaviour
     Event e;
     private int difficulty = 0;
     bool keydown = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -75,8 +76,13 @@ public class numberMan : MonoBehaviour
     public void disable()
     {
         Time.timeScale = 1.0f;
+        for (int i = 0; i < numbers.Count; i++)
+        {
+            Destroy(numbers[i]);
+        }
         enabled = false;
         numberContainer.SetActive(false);
+        
     }
     private void genS()
     {
@@ -93,6 +99,9 @@ public class numberMan : MonoBehaviour
     }
     public void enable()
     {
+        disable();
+        numbers = new List<GameObject>();
+        transform.position = new Vector2(Screen.width*0.5f+40, 200);
         Time.timeScale = 0.2f;
         pos = 0;
         amount = Random.Range(3+difficulty, 10+difficulty);
