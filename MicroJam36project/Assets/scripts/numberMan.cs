@@ -87,6 +87,10 @@ public class numberMan : MonoBehaviour
             s += Random.Range(0, 10).ToString();
         }
     }
+    public void setDifficulty(int dif)
+    {
+        difficulty = dif;
+    }
     public void enable()
     {
         Time.timeScale = 0.2f;
