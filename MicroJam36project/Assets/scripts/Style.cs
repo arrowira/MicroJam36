@@ -7,12 +7,13 @@ using TMPro;
 public class Style : MonoBehaviour
 {
     private float PStyle = 0;
-    int LastGained;
+    int LastGained = 0;
     [SerializeField]
     private TMP_Text rank;
     public float styleRank = 0;
     [SerializeField]
     private Image styleBar;
+    public int Combo = 0;
     void Start()
     {
         
@@ -45,31 +46,18 @@ public class Style : MonoBehaviour
         int Lh = GameObject.Find("playerManager").transform.Find("player").GetComponent<playerMovement>().LastHit;
         int Lf = GameObject.Find("Canvas").transform.Find("numberPanelManager").GetComponent<numberMan>().LastFailed;
         LastGained += 1;
-        if (Lh > 100 && Lh > 50)
+        if(LastGained >= 50 && PStyle >= 0)
         {
-            if (Random.Range(1, 1001) >= LastGained)
-            {
-                Addstyle(1);
-            }
-        }
-        if(LastGained >= 50)
-        {
-            if(Lh < 300 && Lf < 120)
-            {
-                if(GameObject.Find("playerManager").transform.Find("player").GetComponent<Rigidbody2D>().velocity.magnitude >= 0.1f)
-                {
-                    RemoveStyle(Random.Range(0, 2));
-                }
-                RemoveStyle((int)LastGained / 100);
-            }
+            PStyle -= Random.Range(0, 2);
         }
         Debug.Log(PStyle);
     }
 
     public void Addstyle(int amount)
     {
-        PStyle += amount;
+        PStyle += amount*Combo;
         LastGained = 0;
+        Combo += 1;
     }
 
     public void RemoveStyle(int amount)
@@ -79,5 +67,6 @@ public class Style : MonoBehaviour
         {
             PStyle = 0;
         }
+        Combo = 1;
     }
 }
