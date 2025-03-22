@@ -31,7 +31,7 @@ public class numberMan : MonoBehaviour
         if (enabled)
         {
             e = Event.current;
-            if (e.type.Equals(EventType.KeyDown) && !keydown)
+            if (e.type.Equals(EventType.KeyDown))
             {
 
                 keydown = true;
@@ -109,7 +109,7 @@ public class numberMan : MonoBehaviour
         disable();
         numbers = new List<GameObject>();
         transform.position = new Vector2(Screen.width*0.5f+40, 200);
-        Time.timeScale = 0f;
+        Time.timeScale = 1.0f;
         pos = 0;
         amount = Random.Range(2+difficulty, 5+difficulty);
         transform.position=new Vector2(transform.position.x-(amount*40), transform.position.y);
