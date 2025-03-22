@@ -56,12 +56,14 @@ public class numberMan : MonoBehaviour
                     {
                         numbers[i].GetComponent<number>().kill();
                     }
+                    Time.timeScale = 1.0f;
                     Invoke("disable", 0.1f);
                 }
 
 
                 if (pos == amount)
                 {
+                    Time.timeScale = 1.0f;
                     //correctly solved
                     Invoke("disable", 0.1f);
                 }
