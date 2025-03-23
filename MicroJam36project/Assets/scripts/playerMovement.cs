@@ -29,6 +29,8 @@ public class playerMovement : MonoBehaviour
     Style style;
     [SerializeField]
     private TMP_Text scoreNum;
+    [SerializeField]
+    damageSpawner damageSpawner;
     void Start()
     {
         InvokeRepeating("Tick", 0.3f, 0.3f);
@@ -102,6 +104,7 @@ public class playerMovement : MonoBehaviour
             {
                 LastHit = 0;
                 Health -= 10;
+                damageSpawner.spawnParticles();
                 GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(100);
                 collision.gameObject.GetComponent<MeteorController>().Die();
             }
