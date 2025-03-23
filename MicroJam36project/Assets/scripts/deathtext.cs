@@ -21,7 +21,7 @@ public class deathtext : MonoBehaviour
     void Update()
     {
         money.text = pm.Money.ToString();
-        score.text = pm.Score.ToString();
+        score.text = ((int)(pm.Score)).ToString();
 
 
     }

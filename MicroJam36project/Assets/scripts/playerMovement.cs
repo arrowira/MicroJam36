@@ -29,6 +29,10 @@ public class playerMovement : MonoBehaviour
     Style style;
     [SerializeField]
     private TMP_Text scoreNum;
+    [SerializeField]
+    private GameObject healthDeathPanel;
+    [SerializeField]
+    private GameObject deathParticles;
     void Start()
     {
         InvokeRepeating("Tick", 0.3f, 0.3f);
@@ -59,7 +63,11 @@ public class playerMovement : MonoBehaviour
 
         if (Health <= 0)
         {
-            SceneManager.LoadScene("MainScene");
+            //SceneManager.LoadScene("MainScene");
+            healthDeathPanel.SetActive(true);
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+
         }
 
         if (Fuel <= 0)
@@ -102,7 +110,7 @@ public class playerMovement : MonoBehaviour
             if (collision.gameObject.tag == "Enemy")
             {
                 LastHit = 0;
-                Health -= 10;
+                Health -= 30;
                 GameObject.Find("StyleManager").GetComponent<Style>().RemoveStyle(832);
                 collision.gameObject.GetComponent<MeteorController>().Die();
             }
@@ -120,7 +128,7 @@ public class playerMovement : MonoBehaviour
             }
             if (collision.gameObject.tag == "Healing")
             {
-                Health += 25;
+                Health += 10;
                 
                 collision.gameObject.GetComponent<MeteorController>().Die();
             }

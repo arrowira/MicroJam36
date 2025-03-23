@@ -82,7 +82,7 @@ public class numberMan : MonoBehaviour
                     //correctly solved
                     if(astroidType== 1)
                     {
-                        pm.addMoney(10);
+                        pm.addMoney(100);
                         pm.addScore(10);
                         GameObject.Find("StyleManager").GetComponent<Style>().Addstyle((int)(30+((amount*2)/timeAmt)));
                     }
