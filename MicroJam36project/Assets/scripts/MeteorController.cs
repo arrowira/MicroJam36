@@ -6,6 +6,7 @@ public class MeteorController : MonoBehaviour
 {
     float speed;
     private Rigidbody2D rb;
+    private float mod;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -13,11 +14,17 @@ public class MeteorController : MonoBehaviour
         rb.AddTorque(10 * randTurn);
         Invoke("Die", 10);
         speed = 0.15f;
+        mod = GameObject.Find("MeteorSpawner").GetComponent<MeteorSpawning>().Difficulty;
+        if (mod < 3)
+        {
+            GameObject.Find("numberPanelManager").GetComponent<numberMan>().setDifficulty((int)((mod - 1) * 5));
+        }
+        
     }
     void FixedUpdate()
     {
-        float mod = GameObject.Find("MeteorSpawner").GetComponent<MeteorSpawning>().Difficulty;
-        Debug.Log("M: " + mod);
+        
+        //Debug.Log("M: " + mod);
         gameObject.transform.position = new Vector2(gameObject.transform.position.x - (speed*mod), gameObject.transform.position.y);
     }
     public void Die()

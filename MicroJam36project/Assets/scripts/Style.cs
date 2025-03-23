@@ -50,7 +50,16 @@ public class Style : MonoBehaviour
         {
             PStyle -= Random.Range(0, 2);
         }
-        Debug.Log(PStyle);
+        //Debug.Log(PStyle);
+        
+        if (PStyle < 0) {
+            PStyle = 0;
+
+        }
+        else
+        {
+            PStyle -= 0.5f;
+        }
     }
 
     public void Addstyle(int amount)

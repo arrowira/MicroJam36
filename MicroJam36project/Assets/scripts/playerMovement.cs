@@ -121,7 +121,7 @@ public class playerMovement : MonoBehaviour
             if (collision.gameObject.tag == "Healing")
             {
                 Health += 25;
-                GameObject.Find("StyleManager").GetComponent<Style>().Addstyle(50);
+                
                 collision.gameObject.GetComponent<MeteorController>().Die();
             }
         }

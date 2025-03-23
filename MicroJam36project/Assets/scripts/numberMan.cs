@@ -19,6 +19,7 @@ public class numberMan : MonoBehaviour
     [SerializeField]
     playerMovement pm;
     private int astroidType = 0;
+    private float timeAmt;
     //0 is none. 1 is money. 2 is fuel
 
     AudioSource CorrectSound;
@@ -83,11 +84,13 @@ public class numberMan : MonoBehaviour
                     {
                         pm.addMoney(10);
                         pm.addScore(10);
+                        GameObject.Find("StyleManager").GetComponent<Style>().Addstyle((int)(30+((amount*2)/timeAmt)));
                     }
                     else if (astroidType== 2)
                     {
                         pm.addFuel(10);
                         pm.addScore(5);
+                        GameObject.Find("StyleManager").GetComponent<Style>().Addstyle((int)(10+((amount * 2) / timeAmt)));
                     }
                     
                     Invoke("disable", 0.1f);
@@ -129,6 +132,8 @@ public class numberMan : MonoBehaviour
     }
     public void enable(int x)
     {
+        timeAmt = 0;
+
         astroidType= x;
         disable();
         numbers = new List<GameObject>();
@@ -140,7 +145,17 @@ public class numberMan : MonoBehaviour
         genS();
         enabled = true;
         numberContainer.SetActive(true);
+        Invoke("tick", 0.1f);
         generateNums();
+    }
+    private void tick()
+    {
+        if (enabled)
+        {
+            Invoke("tick", 0.1f);
+        }
+        
+        timeAmt += 0.1f;
     }
     public void generateNums()
     {
