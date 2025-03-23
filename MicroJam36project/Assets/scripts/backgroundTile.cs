@@ -14,7 +14,8 @@ public class backgroundTile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = new Vector3(transform.position.x - speed, transform.position.y, 100);
+        float mod = GameObject.Find("MeteorSpawner").GetComponent<MeteorSpawning>().Difficulty;
+        transform.position = new Vector3(transform.position.x - (speed*mod), transform.position.y, 100);
         if(transform.position.x < -40)
         {
             transform.position = new Vector3(30, transform.position.y, 100);

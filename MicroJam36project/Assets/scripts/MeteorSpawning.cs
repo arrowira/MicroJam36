@@ -20,7 +20,7 @@ public class MeteorSpawning : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Difficulty += 0.0001f;
+        Difficulty += 0.00015f;
         if(Random.Range(1, 1437) == 1)
         {
             GameObject M = Instantiate(HealPrefab, new Vector3(40, -12 + Random.Range(1, 25), 1), Quaternion.identity);

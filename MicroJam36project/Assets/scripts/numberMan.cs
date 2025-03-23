@@ -90,7 +90,7 @@ public class numberMan : MonoBehaviour
                     {
                         pm.addFuel(10);
                         pm.addScore(5);
-                        GameObject.Find("StyleManager").GetComponent<Style>().Addstyle((int)(10+((amount * 2) / timeAmt)));
+                        GameObject.Find("StyleManager").GetComponent<Style>().Addstyle((int)(10+((amount * 2) / (timeAmt*0.5))));
                     }
                     
                     Invoke("disable", 0.1f);

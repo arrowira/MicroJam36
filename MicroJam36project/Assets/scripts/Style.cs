@@ -58,7 +58,7 @@ public class Style : MonoBehaviour
         }
         else
         {
-            PStyle -= 0.5f;
+            PStyle -= 0.25f;
         }
     }
 
