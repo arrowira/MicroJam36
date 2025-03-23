@@ -19,7 +19,7 @@ public class playerMovement : MonoBehaviour
     [SerializeField]
     private Image powerBar;
     private int fuelCap = 100;
-    float Health = 100, Fuel = 100, Score = 0, Money = 0;
+    public float Health = 100, Fuel = 100, Score = 0, Money = 0;
     [SerializeField]
     private GameObject fuelDeathpanel;
     [SerializeField]
@@ -73,8 +73,8 @@ public class playerMovement : MonoBehaviour
     private void fuelDeath()
     {
        
-        SceneManager.LoadScene("MainScene");
-        fuelDeathpanel.SetActive(false);
+       
+        //fuelDeathpanel.SetActive(false);
     }
     private void fuelDeathMessage()
     {
