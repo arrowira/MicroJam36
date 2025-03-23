@@ -23,7 +23,7 @@ public class MeteorSpawning : MonoBehaviour
         Difficulty += 0.00015f;
         if(Random.Range(1, 1437) == 1)
         {
-            GameObject M = Instantiate(HealPrefab, new Vector3(40, -12 + Random.Range(1, 25), 1), Quaternion.identity);
+            GameObject M = Instantiate(HealPrefab, new Vector3(40, -12 + Random.Range(1, 25), -1), Quaternion.identity);
             float scale = Random.Range(0.5f * scaleMod, 0.75f * scaleMod);
             M.transform.localScale = new Vector3(scale, scale, 1);
         }

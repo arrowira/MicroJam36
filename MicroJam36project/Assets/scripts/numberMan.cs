@@ -129,7 +129,7 @@ public class numberMan : MonoBehaviour
             }
             else
             {
-                s += Random.Range(1, 4 + difficulty).ToString();
+                s += Random.Range(1, 4 + (int)(difficulty*2)).ToString();
             }
            
         }

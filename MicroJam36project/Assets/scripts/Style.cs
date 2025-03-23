@@ -20,6 +20,10 @@ public class Style : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (PStyle > 2480)
+        {
+            PStyle = 2480;
+        }
         styleBar.fillAmount = 1.0f-((PStyle%416)/416);
         styleRank = PStyle / 416.0f;
         if(styleRank < 1)

@@ -33,6 +33,8 @@ public class playerMovement : MonoBehaviour
     private GameObject healthDeathPanel;
     [SerializeField]
     private GameObject deathParticles;
+    [SerializeField]
+    private TMP_Text fuelwarning;
     void Start()
     {
         InvokeRepeating("Tick", 0.3f, 0.3f);
@@ -41,6 +43,14 @@ public class playerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (Fuel < 20)
+        {
+            fuelwarning.enabled = true;
+        }
+        else
+        {
+            fuelwarning.enabled = false;
+        }
         if (Health > 100)
         {
             Health = 100;
@@ -97,7 +107,7 @@ public class playerMovement : MonoBehaviour
         Money += amt;
         moneyText.text = Money.ToString();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (npm.enabled)
         {
@@ -118,13 +128,13 @@ public class playerMovement : MonoBehaviour
             {
                 npm.enable(2);
 
-                collision.gameObject.GetComponent<MeteorController>().Die();
+                collision.gameObject.GetComponent<MeteorController>().Drill();
             }
             if (collision.gameObject.tag == "Normal")
             {
                 npm.enable(1);
                 Money += 10;
-                collision.gameObject.GetComponent<MeteorController>().Die();
+                collision.gameObject.GetComponent<MeteorController>().Drill();
             }
             if (collision.gameObject.tag == "Healing")
             {
