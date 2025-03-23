@@ -48,11 +48,11 @@ public class playerMovement : MonoBehaviour
             Fuel = fuelCap;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddForce(Vector2.up * upDownSpeed);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             rb.AddForce(Vector2.up * -upDownSpeed);
         }

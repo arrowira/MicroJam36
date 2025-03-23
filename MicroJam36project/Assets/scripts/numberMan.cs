@@ -123,7 +123,15 @@ public class numberMan : MonoBehaviour
         s = "";
         for(int i = 0; i < amount; i++)
         {
-            s += Random.Range(0, 10).ToString();
+            if (difficulty > 5)
+            {
+                s += Random.Range(0, 9).ToString();
+            }
+            else
+            {
+                s += Random.Range(1, 4 + difficulty).ToString();
+            }
+           
         }
     }
     public void setDifficulty(int dif)
